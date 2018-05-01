@@ -13,17 +13,17 @@ const
     index       = fs.createReadStream('./principal.html')
 ;
 
-/* Consumiendo API de pokemon 
+/* Consultado API de pokemon 
    Verificaba los 10 primeros [bulbasaur, venusaur, charmander, charmeleon, charizard, squirtle, wartortle, blastoise, caterpie, ivysaur] 
 */
-P
-    .getPokemonsList(interval)
-    .then((response)=> {
-        console.log(response);
-    });
+// P
+//     .getPokemonsList(interval)
+//     .then((response)=> {
+//         console.log(response);
+//     });
 
 /**
- * Lo que se mostrar en localhost:3000
+ * Lo que se mostrar en localhost:8080
  *
  * @author   Glendy Covarrubias <glendycovarrubias@hotmail.com>
  * date 2018-04-27
@@ -35,8 +35,8 @@ P
  * application/json
  */
 app
-    .get('/apipokemon', (req, res) => {           
+    .get('/', (req, res) => {           
         res.writeHead(200, {'Content-Type' : 'text/html'});
         index.pipe(res);
     })
-    .listen(3000, 'localhost', () => console.log('Servidor corriendoo en http://localhost:3000'));
+    .listen(process.env.PORT || '8080', () => console.log('Servidor corriendoo en http://localhost:8080'));
