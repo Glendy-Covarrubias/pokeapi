@@ -23,7 +23,7 @@ const
 //     });
 
 /**
- * Lo que se mostrar en localhost:8080
+ * Lo que se mostrar en Servidor corriendo en el puerto: 8080
  *
  * @author   Glendy Covarrubias <glendycovarrubias@hotmail.com>
  * date 2018-04-27
@@ -34,9 +34,13 @@ const
  * text/html
  * application/json
  */
-app
-    .get('/', (req, res) => {           
-        res.writeHead(200, {'Content-Type' : 'text/html'});
-        index.pipe(res);
-    })
-    .listen(process.env.PORT || '8080', () => console.log('Servidor corriendoo en http://localhost:8080'));
+app.get('/', (req, res) => {           
+    res.writeHead(200, {'Content-Type' : 'text/html'});
+    index.pipe(res);
+});
+
+const server = app.listen(process.env.PORT || '8080', () => {
+    // console.log('Servidor corriendoo en http://localhost:8080');
+    const port = server.address().port;
+    console.log(`Servidor corriendo en el puerto: ${port}`);
+});
