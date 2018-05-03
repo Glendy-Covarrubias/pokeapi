@@ -35,8 +35,10 @@ const
  * application/json
  */
 app.get('/', (req, res) => {           
+    // res.writeHead(200, {'Content-Type' : 'text/html'});
+    // index.pipe(res);
     res.writeHead(200, {'Content-Type' : 'text/html'});
-    index.pipe(res);
+    res.end('<h1>Hola Node.js en la web como emisor de eventos</h1>');
 });
 
 const server = app.listen(process.env.PORT || '8080', () => {
