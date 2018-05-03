@@ -9,6 +9,7 @@ const
     interval    = { limit: 9 },
     express     = require('express'), // express
     app         = express(),
+    path        = require('path'),
     fs          = require('fs'),
     index       = fs.createReadStream('./principal.html')
 ;
@@ -37,8 +38,26 @@ const
 app.get('/', (req, res) => {           
     // res.writeHead(200, {'Content-Type' : 'text/html'});
     // index.pipe(res);
-    res.writeHead(200, {'Content-Type' : 'text/html'});
-    res.end('<h1>Hola Node.js en la web como emisor de eventos</h1>');
+    
+    //ASI ME FUNCIONO EN GOOGLR CLOUD
+    // res.writeHead(200, {'Content-Type' : 'text/html'});
+    // res.end('<h1>Hola Node.js en la web como emisor de eventos</h1>');
+    
+    // res.writeHead(200, {'Content-Type' : 'text/plain'});
+    // fs.readFile('./principal.html', null, (error, data)=>{
+    //     // if(error){
+    //         res.writeHead(404);
+    //         res.write('Pagina no encontrada');
+    //     // }else{
+    //     //     res.write(data);
+    //     // }
+    // });
+
+    // res.end();
+    // 
+    
+    //Google cloud llamando mi ruta html :O
+    res.sendFile('principal.html', { root: path.join(__dirname, './files')});
 });
 
 const server = app.listen(process.env.PORT || '8080', () => {
